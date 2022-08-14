@@ -4,27 +4,26 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.damiankain.kotlincalcapp.databinding.ActivityMainBinding
 
-// Пока не очень понимаю правильно ли я движусь, потому что пока нет понимания как соединить
-// activity_main , MainActuvity и мой калькулятор из прошлого проекта???
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding  // правильно ли использовать байндинг?
-    
-    fun evaluateExpression(string: String, clear: Boolean) {
-        if(clear) {
-            binding.bRes.text = ""
-            binding.bExp.append(string)
-        } else {
-            binding.bExp.append(binding.bRes.text)
-            binding.bExp.append(string)
-            binding.bRes.text = ""
-        }
-    }
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // правильно ли я получаю имена переменных из activity_main?
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
+        fun evaluateExpression(string: String, clear: Boolean) {
+            if(clear) {
+                binding.bRes.text = ""
+                binding.bExp.append(string)
+            } else {
+                binding.bExp.append(binding.bRes.text)
+                binding.bExp.append(string)
+                binding.bRes.text = ""
+            }
+        }
+        //Digits
         binding.b0.setOnClickListener { evaluateExpression ("0", true) }
         binding.b1.setOnClickListener { evaluateExpression ("1", true) }
         binding.b2.setOnClickListener { evaluateExpression ("2", true) }
@@ -35,11 +34,16 @@ class MainActivity : AppCompatActivity() {
         binding.b7.setOnClickListener { evaluateExpression ("7", true) }
         binding.b8.setOnClickListener { evaluateExpression ("8", true) }
         binding.b9.setOnClickListener { evaluateExpression ("9", true) }
+        binding.bDot.setOnClickListener { evaluateExpression(".", clear = true) }
+
+        //Operators
         binding.bPlus.setOnClickListener { evaluateExpression("+", clear = true) }
         binding.bMinus.setOnClickListener { evaluateExpression("-", clear = true) }
         binding.bMultiple.setOnClickListener { evaluateExpression("*", clear = true) }
         binding.bDivide.setOnClickListener { evaluateExpression("/", clear = true) }
-        binding.bDot.setOnClickListener { evaluateExpression(".", clear = true) }
+        binding.bLR.setOnClickListener { evaluateExpression("(", clear = true) }
+        binding.bRP.setOnClickListener { evaluateExpression(")", clear = true) }
+
         binding.bAC.setOnClickListener {
             binding.bExp.text = ""
             binding.bRes.text = ""

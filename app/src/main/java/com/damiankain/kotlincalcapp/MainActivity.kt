@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.damiankain.kotlincalcapp.databinding.ActivityMainBinding
 
+// Пока не очень понимаю правильно ли я движусь, потому что пока нет понимания как соединить
+// activity_main , MainActuvity и мой калькулятор из прошлого проекта???
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding  // правильно ли использовать байндинг?

@@ -24,3 +24,5 @@ P
 Papp/src/androidTest/java/com/damiankain/kotlincalcapp/ExampleInstrumentedTest.kt,6\4\6478ab96c6bffb1a709f9d71a9bb0da2c9f952a9
 q
 Aapp/src/test/java/com/damiankain/kotlincalcapp/ExampleUnitTest.kt,9\a\9a37af685f88650ae640e800eedd80a512ed0993
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
